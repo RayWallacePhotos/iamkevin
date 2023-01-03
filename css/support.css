@@ -1,0 +1,102 @@
+/*     support.css
+ */
+
+
+.NinetyPercent {
+  width: 85%;
+  margin: 0px auto;
+}
+
+.Images {
+  display: grid;
+
+  grid-template-columns: repeat( auto-fit, minmax(200px,max-content) );
+  grid-template-rows: repeat( auto-fit, 400px );
+}
+.Images .Container {
+  position: relative;
+
+  display: grid;
+  align-items: flex-end;
+
+  margin: 10px;
+}
+.Images, .Htmls {
+  font-family: var(--NiceFont);
+}
+.Images h1, .Htmls h1 {
+  margin: 10px 30px;
+}
+.Images h2, .Htmls h2 {
+  font-size: 1.0rem;
+  margin: 10px 50px;
+}
+.Images h2 {
+  position: absolute;
+  bottom: 0px;
+
+  background-color: rgb(128, 128, 128, 0.7);
+}
+.Images img {
+  /* position: absolute;
+  bottom: 0px; */
+
+  max-width: 100%;
+  max-height: 100%;
+}
+.Images img:hover {
+  animation: RWWJRotate 1.0s 0.1s ease-in-out
+}
+@keyframes RWWJRotate {
+   33% { transform: rotate(10deg) scale(1.2); }
+   66% { transform: rotate(-10deg) scale(0.8); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+
+.MenuOnLeft {
+  background-color: yellow;
+  display: grid;
+  grid-template-columns: 100px 1fr;
+}
+
+.MenuOnLeft menu {
+  /* border: solid 2px red; */
+  border-radius: 10px;
+
+  padding: 10px;
+}
+.MenuOnLeft div {
+  border-radius: 10px;
+}
+
+
+.Htmls p, .Htmls span, .Htmls div {
+  font-size: 0.9rem;
+}
+
+
+.Html {
+  max-width: 100%;
+  max-height: 500px;
+  margin: 4px 10px;
+  padding: 4px 10px;
+
+  overflow: auto;
+}
+
+
+.Center {
+  text-align: center;
+}
+
+
+.Script {
+  font-family: var(--CursiveFont);
+  font-size: 1.5rem !important;
+}
+
+
+
+
+ /*  */

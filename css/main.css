@@ -1,0 +1,377 @@
+/*
+ *      main.css
+ *
+ *  Version 1.1
+ *
+ *  29 Nov 2022  Changed header and header h1 colors
+ *               Moved .Toggled to header instead of h1. Can control colors on both that way
+ *
+ */
+
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  /* border: 0px; NOTE: Do NOT zero out border, it breaks <hr> */
+}
+
+@font-face {
+  font-family: "Creepy";
+  src: url("../fonts/creepy.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Fredericka";
+  src: url("../fonts/FrederickatheGreat-Regular.ttf");
+}
+
+
+html {
+  /* These fonts seem to be standard on most Operating Systems */
+  --FancyFont: "Calisto MT", "Lucida Bright", Lucidabright, Georgia, "Times New Roman", serif;
+  --NiceFont: 'Trebuchet MS', "Lucida Sans", Verdana, sans-serif;
+  --SharpFont: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  --CursiveFont: 'Brush Script MT', 'Brush Script Std', cursive; /* Hard to read, not on Cell phones */
+  --MonoSpaceFont: "DejaVu Sans Mono", "Courier New", monospace;
+  --FantasyFont: "Comic Sans MS", "Comic Relief", Papyrus, Sans-serif;
+  --CleanFont: "URW Gothic L", sans-serif;
+  --FunFont: Fredericka, serif;
+
+  /* Color variable definitions */
+  --DarkestColor: hsl(240, 100%, 10%);
+  --DarkerColor: hsl(240, 100%, 27%); /* DarkBlue */
+  --DarkColor: hsl(210, 100%, 50%);
+  --MediumColor: hsl(197, 71%, 72%);  /* SkyBlue */
+  --NormalColor: hsl(274, 42%, 45%); /* LightPink  hsl(350, 100%, 85%) */
+  --LightColor: hsl(274, 37%, 70%);  /* hsl(270, 100%, 90%); */
+  --LighterColor: hsl(274, 37%, 85%);
+  --LightestColor: hsl(274, 37%, 95%);
+  --SkyBlue: SkyBlue; /* #87CEEB hsl(197, 71%, 72%) */
+  --HarleyOrange: #c93413;
+
+
+  font-size: 16px;  /* rem is always based on the <html> font size. Browsers generaly use 16 */
+}
+
+body {
+  /* border: solid 2px red; */
+
+  font-family: var(--MonoSpaceFont);
+  font-family: var(--FantasyFont);
+
+  background-color: var(--NormalColor);
+  color: var(--DarkestColor);
+
+  width: 100vw;
+  max-width: 100%;  /* NOTE: Fixes horizontal scroll bar being created JUST when there is a vertical scroll bar */
+}
+
+p {
+  margin-bottom: 1rem;
+
+  text-align: justify;
+}
+
+.AllContent {
+  /* border: solid 2px orange; */
+  position: relative;
+
+  min-height: 100vh;   /* Starts full window */
+  height: max-content; /* But can grow with content to taller than window */
+
+  display: grid;
+  grid-template-areas:
+              "Header"
+              "Menu"
+              "Main"
+              "Footer";
+  /* Let horizontal re-size while maxing out at 1024px */
+  /* grid-template-columns: minmax(0px, 1024px); */
+  grid-template-columns: 100%;
+  /*                   Header,     Menu,         Main,  Footer */
+  grid-template-rows: max-content  max-content   auto      max-content;
+
+  justify-content: center; /* center our layout horizontally, IF it does not fill the screen width */
+}
+
+
+header {
+  /* border: solid 2px green; */
+
+  grid-row: Header;
+
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: var(--FunFont);
+
+  text-align: center; /* Center elements horizontally */
+  text-transform: uppercase;
+
+  background-color: var(--MediumColor);
+
+  box-shadow: inset 2px 2px 3px tan, inset -2px -2px 3px tan;
+  border-radius: 4px;
+}
+header.Paused {
+  background-color: var(--NormalColor);
+}
+header h1 {
+  vertical-align: bottom;
+  color: var(--DarkColor);
+  text-shadow: 2px 3px 5px var(--DarkerColor);
+
+  margin-top: 8px;
+}
+header.Paused h1 {
+  text-shadow: 2px 3px 5px black;
+}
+header img {
+  width: 64px;
+  float: left;
+
+  border-radius: 10px;  /* For other two corners */
+  border-top-left-radius: 44px 20px;
+  border-bottom-right-radius: 44px 20px;
+
+  box-shadow: 1px 1px 8px var(--DarkerColor);
+
+  margin: 4px;
+}
+
+
+.MenuArea {
+  /* border: solid 2px pink; */
+  background-color: var(--LightColor);
+
+  padding: 6px 10px;
+
+  grid-row: Menu;
+  align-self: center; /* Verticaly in grid space */
+  /*justify-self: center; /* Horizontaly in grid space */
+}
+.MenuArea a {
+  padding: 0rem 1rem;
+  margin: 0rem 0.2rem;
+
+  text-decoration: none;
+  box-shadow: 1px 1px 3px var(--DarkestColor);
+}
+
+.CurrentMenu {
+  background-color: var(--NormalColor);
+}
+
+
+main {
+  /* border: solid 2px blue; */
+  border-radius: 8px;
+  box-shadow: inset 2px 2px 3px tan, inset -2px -2px 3px tan;
+
+  font: 18px "Informal Roman", times, serif;
+  background-color: var(--LightColor);
+
+  padding: 6px 10px;
+
+  grid-row: Main;
+}
+
+main section {
+  border-radius: 8px;
+}
+
+.Title {
+  margin-left: 3rem;
+  margin-bottom: 0.2rem;
+}
+
+.ClearBoth, .ClearAll {
+  clear: both;
+  padding: 10px;
+}
+
+footer {
+  background-color: var(--LighterColor);
+
+  grid-row: Footer; /* Going to end up there by default anyway */
+
+  padding: 5px 10px;
+
+  font-size: 0.8rem;  /* Make the same as img width */
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+}
+footer img {
+  width: 0.8rem;  /* Make the same as font-size */
+}
+footer a {
+  margin: 0 auto; /* Center Facebook link */
+}
+
+
+Button {
+  text-decoration: none;
+  border-radius: 0.4rem;
+  box-shadow: 2px 2px 2px rgba(8, 59, 42, 0.96);
+
+  margin: 4px;
+  padding: 2px 3px;
+  cursor: pointer;
+}
+Button:hover {
+  opacity: .5;
+}
+
+
+.Container {
+  position: relative;
+}
+
+
+.SliderContainer {
+  background-color: var(--DarkColor);
+  box-shadow: inset 0px 0px 8px var(--NormalColor); /* Softens the edge */
+  border-radius: 6px;
+
+  width: max-content;
+  padding: 2px 20px;
+}
+input[type=range] {
+  margin: 0px 3px;
+  outline: none;
+
+  vertical-align: middle;  /* Move the min&max numbers up even with slider */
+  padding: 3px 0px;  /* left&right cause the slider to STOP at those limits on Chrome */
+
+  cursor: pointer;
+
+  appearance: none; /* NOTE IMPORTANT Need this else the settings below have no effect */
+    background: var(--NormalColor);
+    height: 12px;
+    border-radius: 8px;
+}
+label[for="SliderID"] {
+  margin-left: 6px;
+  margin-right: 0.7rem;
+}
+.SliderValue {
+  border-radius: 4px;
+
+  margin-left: 6px;
+  margin-right: 30px;
+}
+
+
+
+.Hidden, .HideContent {
+  display: none;
+}
+
+
+hr.Fancy {
+  border-radius: 4px;
+  border-bottom: solid 1px var(--DarkerColor);
+  margin: 20px;
+  border-top: 4px double darkgray;
+}
+
+
+.Smiley {
+  /* color: orange; */
+  font-size: 26px;
+}
+
+
+.Houdini:after {
+  content: " \2620  \2654  \26CF  "; /* Hex values for Skull Crossbones, Kings Crown, Pickaxe */
+  /* font-size: 1.5rem; */
+  font-weight: bolder;
+  outline: solid 4px var(--HarleyOrange);
+  color: red;
+}
+
+
+canvas {
+  /* Canvas are inline, so they take up space below them, like text does to leave space for descenders */
+  vertical-align: bottom;
+  /* Canvas are inline, so they take up space below them, like text does to leave space for descenders */
+  position: absolute;
+}
+
+
+img.TextWrap {
+  float: left;
+  padding-right: 12px;
+
+  max-width: 300px;
+  max-height: 300px;
+
+  /* box-shadow: 4px 4px 10px var(--DarkestColor); */
+
+  border-radius: 50%;
+  shape-outside: border-box;
+}
+
+img.Icon {
+  max-width: 32px;
+  margin: 0px 0.3rem;
+}
+
+
+.SmallMargin {
+  margin-left: 50px;
+  margin-top: 50px;
+}
+.HugeMargin {
+  margin-left: 200px;
+  margin-top: 100px;
+}
+.Border {
+  border: solid 2px var(--DarkerColor);
+}
+.BoxShadow {
+  box-shadow: inset 2px 2px 5px var(--DarkerColor),  inset -2px -2px 5px var(--DarkestColor);
+}
+.HugeBoxShadow {
+  box-shadow: inset 1px 1px 15px var(--DarkerColor),  inset -4px -4px 25px var(--DarkestColor);
+  padding: 20px;
+}
+
+
+.Narrow {
+  /* max-width: 800px; */
+  width: 800px;
+
+  margin: 0px auto;
+}
+
+
+
+/* Arrows (triangles),
+ * Down Solid \25bc, Down Hollow \25bd
+ * Left Solid \25c0, Left Hollow \25c1
+ * Right Solid \25b7, Right Hollow \25b6
+ * uP Solid \25b3, uP Hollow \25b2
+ */
+.UpArrow::before {
+  content: "\25b2";
+  margin-right: 4px;
+}
+.DownArrow::before {
+  content: "\25bC";
+  margin-right: 4px;
+}
+.LeftArrow::before {
+  content: "\25C0";
+  margin-right: 4px;
+}
+.RightArrow::before {
+  content: "\25b7";
+  margin-right: 4px;
+}
+
+
+
+
+
+/*  */
