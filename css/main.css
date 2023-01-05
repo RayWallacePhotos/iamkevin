@@ -138,8 +138,15 @@ header img {
   margin: 4px;
 }
 
+.Rotate90 {
+  display: inline-block;
+  transform: rotate( 90deg );
+  font-size: 80%;
+  margin-right: 0px;
+  margin-left: 8px;
+}
 
-.MenuArea {
+nav {
   /* border: solid 2px pink; */
   background-color: var(--LightColor);
 
@@ -149,7 +156,7 @@ header img {
   align-self: center; /* Verticaly in grid space */
   /*justify-self: center; /* Horizontaly in grid space */
 }
-.MenuArea a {
+nav a {
   padding: 0rem 1rem;
   margin: 0rem 0.2rem;
 

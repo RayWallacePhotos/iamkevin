@@ -55,21 +55,43 @@
 
 
 .MenuOnLeft {
-  background-color: yellow;
-  display: grid;
-  grid-template-columns: 100px 1fr;
-}
+  position: relative;
 
-.MenuOnLeft menu {
-  /* border: solid 2px red; */
+  background-color: rgb(255,255,71); /* rgb(255,255, 0 ) is yellow; */
+  display: grid;
+  grid-template-columns: minmax(100px,auto) 1fr;
+}
+.MenuOnLeft div {
   border-radius: 10px;
 
   padding: 10px;
 }
-.MenuOnLeft div {
-  border-radius: 10px;
-}
+.MenuOnLeft menu {
+  position: sticky;
+  top: 40px;
 
+  /* border: solid 2px red; */
+  border-radius: 10px;
+
+  /* padding: 10px; */
+}
+.MenuOnLeft menu li {
+  list-style: none;
+  font-family: var(--SharpFont);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+
+  margin: 6px 0 0px;
+  box-shadow: 2px 2px 4px var(--DarkestColor);
+}
+.MenuOnLeft menu li:hover {
+  outline: ridge 2px var(--DarkColor);
+  box-shadow: 4px 4px 1px var(--DarkestColor);
+}
+.MenuOnLeft menu li a {
+  text-decoration: none;
+  padding: 0px 6px;
+}
 
 .Htmls p, .Htmls span, .Htmls div {
   font-size: 0.9rem;
