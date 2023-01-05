@@ -34,20 +34,30 @@
 //        Version 2.0
 //  20 Dec 2022  Added cssStylesheet()
 //        Version 2.1
+//  27 Dec 2022  Added emptyObj( )
+//        Version 2.2
+//   4 Jan 2023  Added capitalize() synonym for capitalizeWords()
+//        Version 2.3
+//   4 Jan 2023  Added filename()
+//        Version 2.3a
+//   4 Jan 2023  Added makeDOMId( ) (moved her from dialog_box.js)
+//        Version 2.3b
+//
 
 
-var HelpersJsVersion = "2.0";
+var HelpersJsVersion = "2.3b";
+
 
 
 // Import all with this statement (NOTE: change the directory as appropriate)
-//import {fullscreenToggle, hostName, pageName, capitalizeWords, isCellPhone, cloneObj,
-//        daysInMonth, loadScript, playSoundFile, pathFromURL, hash, uuid, extension, changeExtension,
+//import {fullscreenToggle, hostName, pageName, capitalizeWords, capitalize, isCellPhone, cloneObj,
+//        daysInMonth, loadScript, playSoundFile, pathFromURL, hash, uuid, makeDOMId, filename, extension, changeExtension,
 //        changeExt, initSlider
 //       } from "../Javascript-Libraries/Helpers-Module.js";
 
 
-// export {fullscreenToggle, pageName, hostName, capitalizeWords, isCellPhone, cloneObj,
-//         daysInMonth, loadScript, playSoundFile, pathFromURL, hash, uuid, extension, changeExtension,
+// export {fullscreenToggle, pageName, hostName, capitalizeWords, capitalize, isCellPhone, cloneObj,
+//         daysInMonth, loadScript, playSoundFile, pathFromURL, hash, uuid, makeDOMId, filename, extension, changeExtension,
 //         changeExt, initSlider
 //        };
 
@@ -58,6 +68,7 @@ var HelpersJsVersion = "2.0";
 // hostName( )
 // pageName( )
 // capitalizeWords( str )
+// capitalize( str )
 // isCellPhone( )
 // cloneObj( src )
 // daysInMonth( theDate = null )
@@ -68,12 +79,15 @@ var HelpersJsVersion = "2.0";
 // pathFromURL( url )
 // hash( string )
 // uuid()
+// makeDOMId( name, suffix = "ID" )
+// filename( fileName )
 // extension( filename )
 // changeExtension( fileName, ext )
 // changeExt( fileName, ext )
 // initSlider( {name="Percentage", sliderId=null, parent = null, callback=null, min=0, max=100} )
 // cssStylesheet( name, styleText )
-
+// emptyObj( obj )
+//
 
 
 //
@@ -122,10 +136,20 @@ function hostName( ) {
 //
 // Capitalize all words that start with a character (i.e. not with a # or symbol)
 //
+// Equivelent to capitalize()
+//
 function capitalizeWords( str ) {
+  // return str.split(" ").map(str => str[0].toUpperCase()+str.slice(1) ).join(" ");
   return str.replace( /\b(\w)/g , match => match.toUpperCase() );
 }
 
+
+//
+// Synonym for capitalizeWords()
+//
+function capitalize( str ) {
+  return capitalizeWords( str );
+}
 
 
 //
@@ -401,6 +425,35 @@ function uuid() {
 
 
 //
+// Creates a unique DOM Element ID with __, name, datetime and specified suffix
+//
+// Sanitizes name by replacing spaces and invalid ID characters with _ (underscore)
+//
+function makeDOMId( name, suffix = "ID" ) {
+  let uniqueStr = performance.now().toString(16);
+
+  return "__" + name.replace( /[\[\]\s!@#$%^&\*\(\)]/g, "_" ) + "_" + uniqueStr + "_" + suffix;
+}
+
+
+
+//
+// Returns filename with the path stripped off
+//
+function filename( fileName ) {
+  let pathEnd;
+
+  pathEnd = fileName.lastIndexOf( "/" );
+  if( pathEnd != -1 ) fileName = fileName.substring( pathEnd+1 );
+
+  pathEnd = fileName.lastIndexOf( "\\" );
+
+  if( pathEnd != -1 ) return fileName.substring( pathEnd+1 );
+  else return fileName;
+}
+
+
+//
 // Returns .ext (extension of filename), i.e. ".jpg", ".pdf"
 //
 function extension( fileName ) {
@@ -589,6 +642,15 @@ function cssStylesheet( name, styleText ) {
     // Set a flag so we know we've created this stylesheet
     newStyleSheet.insertRule( `.DlgCSSCreatedFlag { content: "${name}" }` ); // Ensure it's last rule that we add, so we find it at .cssRules[0]
   }
+}
+
+
+//
+// This only tests for emptiness. Use Object.keys(obj).length if you want to know the number of properties
+//
+function emptyObj( obj ) {
+  for( let property in obj ) return false; // If there are ANY properties, then it is not empty
+  return true;
 }
 
 
