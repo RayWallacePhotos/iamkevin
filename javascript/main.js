@@ -48,15 +48,10 @@ function init( ) {
 
   createMenus( );
 
-  // Call some init() routines based on the web page we are on
+  // Call the init() routine for the web page we are on
   for( let menu of MenuEntries ) {
-    // <a href="index.html" target="_self">Home</a>
-    if( menu.url == pageName()+".html" && menu.init ) menu.init( pageName() );
+    if( menu.url == pageName()+".html" && menu.init ) menu.init( pageName(), menu.menu );
   }
-  // if( pageName() == "crewel" || pageName() == "dollhouse" || pageName() == "paintings" ||
-  //     pageName() == "photographs" || pageName() == "sculptures" ) imagesInit( pageName() );
-  // else if( pageName() == "writings" ) writingsInit();
-
 
   if( document.getElementById("MovingBoxID") ) initDragAndDrop( );
 }

@@ -13,12 +13,12 @@ let VersionHtmlJs = "1.0";
 //
 // Called by init() in main.js
 //
-function htmlInit( page) {
+function htmlInit( page, title ) {
   let menuElement = document.querySelector( "menu" );
-  let titleElement = document.querySelector( ".Title" );
   let htmlsElement = document.querySelector( ".Htmls" );
 
-  titleElement.innerText = capitalize( page );
+  // document.querySelector( ".Title" ).innerText = capitalize( page );
+  document.querySelector( ".Title" ).innerText = title;
 
   fileFileOfTextFiles( page+".txt", {basePath: `../${page}`,
     callback: data => {
@@ -30,7 +30,6 @@ function htmlInit( page) {
 
         id = makeDOMId( name );
 
-//        menuElement.innerHTML += `<li>${name.split("_").join(" ")}</li>`;
         menuElement.innerHTML += `<li><a href="#${id}">${name.split("_").join(" ")}</a></li>`;
 
         htmlsElement.innerHTML += `<section class="Html BoxShadow">
