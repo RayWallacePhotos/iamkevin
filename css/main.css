@@ -70,6 +70,7 @@ p {
   margin-bottom: 1rem;
 
   text-align: justify;
+  font-size: 1.5rem;
 }
 
 .AllContent {
@@ -346,8 +347,9 @@ img.Icon {
 
 
 .Narrow {
-  /* max-width: 800px; */
-  width: 800px;
+  min-width: 800px;
+  max-width: 900px;
+  /* width: 800px; */
 
   margin: 0px auto;
 }

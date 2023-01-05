@@ -80,6 +80,7 @@
   font-family: var(--SharpFont);
   font-size: 0.9rem;
   text-transform: uppercase;
+  border-radius: 4px;
 
   margin: 6px 0 0px;
   box-shadow: 2px 2px 4px var(--DarkestColor);
