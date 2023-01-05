@@ -201,7 +201,6 @@ function fileFileOfTextFiles( fileName, {basePath="", callback=null}={} ) {
 function loadNextFile( next, fileList, {basePath, callback} ) {
   if( next < fileList.length ) {
     fileReadText( basePath + fileList[next], (textObj) => {
-console.log(`DEBUG loadNextFile: ${basePath + fileList[next]}`);
       callback( textObj );
 
       // Recursion until we're done
