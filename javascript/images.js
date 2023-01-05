@@ -14,7 +14,8 @@ let VersionImagesJs = "1.0";
 // Called by init() in main.js
 //
 function imagesInit( page, title ) {
-  let basePath = `../images/${page}/`;
+//  let basePath = `../images/${page}/`;
+  let basePath = `/images/${page}/`;
   let imagesElement = document.querySelector( ".Images" );
 
   // document.querySelector( ".Title" ).innerText = capitalize( page );
