@@ -33,11 +33,13 @@ function imagesInit( page, title ) {
     data => {
       if( data.text ) {
         for( let fileName of data.text.trim().split("\n") ) {
+// NOTE: Looks like Facebook's code prepends the location.href for me
+// console.log(basePath+fileName);
           imagesElement.innerHTML += `
           <span" class="Container">
             <img src=${basePath+fileName}>
 
-            ${facebookButton(location.hostname+"/"+basePath+fileName)}
+            ${facebookButton(basePath+fileName)}
           </span>
           `;
         }
