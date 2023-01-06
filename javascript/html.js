@@ -20,10 +20,6 @@ function htmlInit( page, title ) {
   // document.querySelector( ".Title" ).innerText = capitalize( page );
   document.querySelector( ".Title" ).innerText = title;
 
-//console.log(`Reading text file: ${page+".txt"}, passing path of: "../${page}"`);
-console.log(`Reading text file: ${page+".txt"}, passing path of: "/${page}"`);
-//  fileFileOfTextFiles( page+".txt", {basePath: `../${page}`,
-//  fileFileOfTextFiles( page+".txt", {basePath: `/${page}`,
   fileFileOfTextFiles( page+".txt", {basePath: `${page}`,
     callback: data => {
       if( data.text ) {
