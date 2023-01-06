@@ -217,6 +217,15 @@ footer a {
 }
 
 
+a {
+  text-decoration: none;
+  border-radius: 3px;
+  padding: 0px 3px;
+}
+a:hover {
+  box-shadow: 1px 1px 3px var(--DarkestColor);
+}
+
 Button {
   text-decoration: none;
   border-radius: 0.4rem;
